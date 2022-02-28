@@ -6,7 +6,7 @@ RUN yum --disableplugin=subscription-manager -y module enable php:7.2 \
 
 ADD index.php /var/www/html
 
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
+RUN sed -i 's/Listen 80/Listen 8080/' 's/Listen 443/Listen 8443/' /etc/httpd/conf/httpd.conf \
   && mkdir /run/php-fpm \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
