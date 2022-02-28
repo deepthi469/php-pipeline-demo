@@ -41,7 +41,12 @@ objects:
             ports:
             - containerPort: 8080
               name: http
-              protocol: TCP 
+              protocol: TCP
+
+            - containerPort: 8443
+              name: https
+              protocol: TCP
+   
   - kind: Service
     apiVersion: v1
     metadata:
@@ -52,6 +57,8 @@ objects:
       ports:
       - name: http
         port: 8080
+      - name: https
+        port: 8443    
       selector:
         app: ${APP_NAME}
   - kind: Route
