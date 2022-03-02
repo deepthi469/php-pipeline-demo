@@ -1,29 +1,29 @@
-# Include the Deployment Resource 
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: helm-app-demo
+  name: php-hello-helm  
   namespace: team-one
- spec:
-      replicas: 2
-      selector:
-        matchLabels:
-          app: helm-app-demo
-      template:
-        metadata:
-          labels:
-            app: helm-app-demo
-          annotations:
-        spec:
-          containers:
-          - env:
-            image: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
-            imagePullPolicy: Always
-            name: helm-app-demo
-            ports:
-            - containerPort: 8080
-              name: http
+  labels:
+    app: php-hello-helm
+    app.kubernetes.io/part-of: php-hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: php-hello-helm
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: php-hello-helm
+    spec:
+      containers:
+        - name: php-hello-helm
+          image: 'quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3'
+          ports:
+            - name: http
+              containerPort: 8080
               protocol: TCP
-          
+          imagePullPolicy: Always          
       imagePullSecrets:
       - name: robot-account
