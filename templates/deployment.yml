@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.appname }}
-          image: {{ .Values.imagename }}
+          image: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
           ports:
             - name: http
               containerPort: 8080
