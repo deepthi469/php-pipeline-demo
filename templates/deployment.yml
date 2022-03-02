@@ -1,4 +1,4 @@
-# Include the Deployment Resource for VIC
+# Include the Deployment Resource 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
