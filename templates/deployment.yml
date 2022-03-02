@@ -1,29 +1,28 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: php-hello-helm  
+  name: {{ .Values.appname }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: php-hello-helm
-    app.kubernetes.io/part-of: php-hello
+    app: {{ .Values.appname }}    
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: php-hello-helm
+      app: {{ .Values.appname }}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: php-hello-helm
+        app: {{ .Values.appname }}
     spec:
       containers:
-        - name: php-hello-helm
-          image: 'quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3'
+        - name: {{ .Values.appname }}
+          image: {{ .Values.imagename }}
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
           imagePullPolicy: Always          
       imagePullSecrets:
-      - name: robot-account
+      - name: {{ .Values.secret }}
