@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: php-hello-helm  
-  namespace: team-one
+  namespace: {{ .Values.namespace }}
   labels:
     app: php-hello-helm
     app.kubernetes.io/part-of: php-hello
