@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Helm-app-demo
+  name: helm-app-demo
   namespace: team-one
  spec:
       replicas: 2
       selector:
         matchLabels:
-          app: Helm-app-demo
+          app: helm-app-demo
       template:
         metadata:
           labels:
-            app: Helm-app-demo
+            app: helm-app-demo
           annotations:
         spec:
           containers:
           - env:
             image: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
             imagePullPolicy: Always
-            name: Helm-app-demo
+            name: helm-app-demo
             ports:
             - containerPort: 8080
               name: http
