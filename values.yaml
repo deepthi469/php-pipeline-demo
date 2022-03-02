@@ -1,6 +1,7 @@
 # Dynamic Values
-deployment:
-  namespace: team-one
+namespace: team-one
+
+deployment:  
   appname: Helm-app-demo
   imagename: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
 
