@@ -3,12 +3,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: Helm-app-demo
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.deployment.namespace }}
  spec:
       replicas: 2
       selector:
         matchLabels:
-          app: {{ .Values.appname }}
+          app: {{ .Values.deployment.appname }}
       template:
         metadata:
           labels:
@@ -17,9 +17,9 @@ metadata:
         spec:
           containers:
           - env:
-            image: {{ .Values.imagename }}
+            image: {{ .Values.deployment.imagename }}
             imagePullPolicy: Always
-            name: {{ .Values.appname }}
+            name: {{ .Values.deployment.appname }}
             ports:
             - containerPort: 8080
               name: http
