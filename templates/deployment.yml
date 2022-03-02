@@ -1,0 +1,29 @@
+# Include the Deployment Resource 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Helm-app-demo
+  namespace: {{ .Values.deployment.namespace }}
+ spec:
+      replicas: 2
+      selector:
+        matchLabels:
+          app: {{ .Values.deployment.appname }}
+      template:
+        metadata:
+          labels:
+            app: {{ .Values.appname }}
+          annotations:
+        spec:
+          containers:
+          - env:
+            image: {{ .Values.deployment.imagename }}
+            imagePullPolicy: Always
+            name: {{ .Values.deployment.appname }}
+            ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          
+      imagePullSecrets:
+      - name: robot-account
