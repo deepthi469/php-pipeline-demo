@@ -1,29 +1,28 @@
-# Include the Deployment Resource for VIC
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: Helm-app-demo
+  name: {{ .Values.appname }}
   namespace: {{ .Values.namespace }}
- spec:
-      replicas: 2
-      selector:
-        matchLabels:
-          app: {{ .Values.appname }}
-      template:
-        metadata:
-          labels:
-            app: {{ .Values.appname }}
-          annotations:
-        spec:
-          containers:
-          - env:
-            image: {{ .Values.imagename }}
-            imagePullPolicy: Always
-            name: {{ .Values.appname }}
-            ports:
-            - containerPort: 8080
-              name: http
+  labels:
+    app: {{ .Values.appname }}    
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.appname }}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.appname }}
+    spec:
+      containers:
+        - name: {{ .Values.appname }}
+          image: {{ .Values.imagename }}
+          ports:
+            - name: http
+              containerPort: 8080
               protocol: TCP
-          
+          imagePullPolicy: Always          
       imagePullSecrets:
-      - name: robot-account
+      - name: {{ .Values.secret }}

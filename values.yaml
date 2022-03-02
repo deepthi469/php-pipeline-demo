@@ -3,3 +3,7 @@ namespace: team-one
 appname: Helm-app-demo
 imagename: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
 secret: robot-account
+<<<<<<< HEAD
+=======
+
+>>>>>>> e986e3ce6540c592c9795cbf2de4059633b55bbc
