@@ -1,5 +1,5 @@
 # Dynamic Values
 namespace: team-one
-appname: Helm-app-demo
+appname: helm-app-demo
 imagename: quay.vapo.va.gov/marcos.serranojr/helm_demo:v1.3
 secret: robot-account
