@@ -1,7 +1,7 @@
 <?php
-  print "Hello, World! I am running on host " . gethostname() ." (" . $_SERVER['SERVER_ADDR'] . ")" . "\n";
+  print "Hello, VA Team, This is Deepthi. This is a demo for php app deployment! I am running on host " . gethostname() ." (" . $_SERVER['SERVER_ADDR'] . ")" . "\n";
   echo "<br/><br/>";
-  print "This app was built with php " . PHP_VERSION . "\n";
+  print "The version of the php is " . PHP_VERSION . "\n";
   echo "<br/><br/>";
   print "The value of the variable MY_STRING is " .$_ENV["MY_STRING"] . "\n";
   echo "<br/><br/>";
