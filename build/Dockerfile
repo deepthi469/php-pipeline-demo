@@ -1,15 +1,18 @@
-FROM registry.access.redhat.com/ubi8/ubi
+FROM  registry.access.redhat.com/ubi8/ubi:8.5-226.1645809065
+#FROM registry.access.redhat.com/ubi8/ubi
 
 RUN yum --disableplugin=subscription-manager -y module enable php:7.2 \
   && yum --disableplugin=subscription-manager -y install httpd php \
+ # && yum --disableplugin=subscription-manager -y install rsync \
   && yum --disableplugin=subscription-manager clean all
 
 ADD /src/index.php /var/www/html
 
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
-  && sed -i '/Listen 8080/ a Listen 8443' /etc/httpd/conf/httpd.conf \
+ #&& sed -i '/Listen 8080/ a Listen 8443' /etc/httpd/conf/httpd.conf \
   && mkdir /run/php-fpm \
-  && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
+  && mkdir /my_files \
+  && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \ 
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
   
 EXPOSE 8080
