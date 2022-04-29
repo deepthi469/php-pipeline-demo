@@ -4,6 +4,7 @@ RUN echo "Install nmap"
 RUN apt-get install sudo
 RUN apt-get install nmap -y
 RUN whoami
+ENV inputs.params.targetIP 127.0.0.1
 RUN sudo nmap $(inputs.params.targetIP) && \
 sudo nmap $(inputs.params.targetIP) -O && \
 sudo nmap $(inputs.params.targetIP) -sT && \
