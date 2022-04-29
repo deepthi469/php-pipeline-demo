@@ -14,3 +14,4 @@ sudo nmap $(inputs.params.targetIP) -f -oX /nmap/home/dast-report.xml
 RUN cat /nmap/home/dast-report.xml
 RUN curl -v -u dm-vic:Password123 --upload-file /nmap/home/dast-report.xml http://nexus3-openshift-operators.apps.vapo-ppd.va.gov/repository/dm-vic/dast-report.$localdate.xml
 RUN echo "DAST report Upload Complete"
+CMD ["tail", "-f", "/dev/null"]
